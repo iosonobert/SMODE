@@ -45,7 +45,8 @@ for imgdir in imgdirs:
     df = []
     for ff in tiff_files:
         df.append(parse_exif(ff))
-
+        break 
+    
     print('EXIF data read...')
     print(len(df), ' files processed.')
 
