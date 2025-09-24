@@ -1,5 +1,5 @@
 # Activate your virtual environment
-source ~/smode_env/bin/activate
+source $MYSOFTWARE/smode_env/bin/activate
 
 # Make sure download folder exists
 mkdir -p $MYSCRATCH/DOPPVIS
