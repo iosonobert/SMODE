@@ -13,4 +13,4 @@ echo "SLURM Job ID: $SLURM_JOB_ID"
 source $HOME/smode_env/bin/activate
 
 # Run download script
-bash $HOME/SMODE/download_smode_login.sh
+bash $HOME/SMODE/download_podaac.sh
