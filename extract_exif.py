@@ -1,4 +1,4 @@
-imgdir = '/scratch/pawsey0106/azulberti//DOPPVIS/DoppVis_20230418_235551_555-20230419_001018_055'
+imgdir = '/scratch/pawsey0106/azulberti/DOPPVIS/DoppVis_20230418_235551_555-20230419_001018_055'
 
 import glob, os
 import rasterio, pandas as pd
