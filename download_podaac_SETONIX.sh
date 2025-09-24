@@ -15,7 +15,7 @@ podaac-data-subscriber \
 echo "Download complete."
 
 # Optional: extract downloaded .gz files
-for f in ./DOPPVIS/*.gz; do
+for f in $MYSCRATCH/DOPPVIS/*.gz; do
     echo "Extracting $f"
-    tar -xzvf "$f" -C ./DOPPVIS
+    tar -xzvf "$f" -C $MYSCRATCH/DOPPVIS
 done

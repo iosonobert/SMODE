@@ -2,20 +2,10 @@
 source ~/smode_env/bin/activate
 
 # Make sure download folder exists
-mkdir -p $MYSCRATCH/DOPPVIS
-
-# Run the download
-podaac-data-subscriber \
-  -c SMODE_L1_MASS_DOPPVIS_V1 \
-  -d $MYSCRATCH/DOPPVIS \
-  --start-date 2023-04-19T00:00:00Z \
-  --end-date 2023-04-19T00:05:00Z \
-  -e ""
-
-echo "Download complete."
+mkdir -p $MYSCRATCH/DOPPVISs
 
 # Optional: extract downloaded .gz files
-for f in ./DOPPVIS/*.gz; do
+for f in $MYSCRATCH/DOPPVIS/*.gz; do
     echo "Extracting $f"
-    tar -xzvf "$f" -C ./DOPPVIS
+    tar -xzvf "$f" -C $MYSCRATCH/DOPPVIS
 done
