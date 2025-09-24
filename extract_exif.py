@@ -23,7 +23,7 @@ basedir = os.environ["MYSCRATCH"] + "/DOPPVIS"
 imgdirs = [
     os.path.join(basedir, d) for d in os.listdir(basedir)
     if os.path.isdir(os.path.join(basedir, d)) and not d.endswith(".gz")
-]
+          ]
 
 print(f'Found {len(imgdirs)} subdirectories in {basedir}.')
 
@@ -50,7 +50,8 @@ for imgdir in imgdirs:
     exif = pd.concat(df)
     ds_exif = exif.to_xarray().rename({'index':'time'})
 
-    ds_exif.to_netcdf()
+    ds_exif.to_netcdf(netcdfname)
+    print(f'   Saved to {netcdfname}')
 
     print(ds_exif)
     print('Done.')
