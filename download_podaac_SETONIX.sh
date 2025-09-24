@@ -9,7 +9,7 @@ podaac-data-subscriber \
   -c SMODE_L1_MASS_DOPPVIS_V1 \
   -d $MYSCRATCH/DOPPVIS \
   --start-date 2023-04-19T00:00:00Z \
-  --end-date 2023-04-20T00:00:00Z \
+  --end-date 2023-04-19T00:05:00Z \
   -e ""
 
 # Optional: extract downloaded .gz files
