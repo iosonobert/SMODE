@@ -30,6 +30,8 @@ print(f'Found {len(imgdirs)} subdirectories in {basedir}.')
 for imgdir in imgdirs:
     print(f'Processing directory: {imgdir}')
     netcdfname = os.path.join(basedir, imgdir + '_exif_data.nc')
+    print(f'   Target netcdf: {netcdfname}')
+    
     if os.path.exists(netcdfname):
         print(f'   {netcdfname} already exists, skipping...')
         continue
