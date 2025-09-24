@@ -2,7 +2,7 @@
 #SBATCH --job-name=smode_download
 #SBATCH --output=smode_download.out
 #SBATCH --error=smode_download.err
-#SBATCH --time=04:00:00
+#SBATCH --time=30:00:00
 #SBATCH --mem=16G
 #SBATCH --partition=copy
 
