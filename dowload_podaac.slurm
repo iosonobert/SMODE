@@ -1,10 +1,13 @@
 #!/bin/bash
 #SBATCH --job-name=smode_download
-#SBATCH --output=$HOME/SMODE/smode_download.out
-#SBATCH --error=$HOME/SMODE/smode_download.err
+#SBATCH --output=smode_download.out
+#SBATCH --error=smode_download.err
 #SBATCH --time=04:00:00
 #SBATCH --mem=16G
 #SBATCH --partition=copy
+
+# Print job ID into the output file
+echo "SLURM Job ID: $SLURM_JOB_ID"
 
 # Activate virtual environment
 source $HOME/smode_env/bin/activate
