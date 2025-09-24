@@ -10,7 +10,7 @@
 echo "SLURM Job ID: $SLURM_JOB_ID"
 
 # Activate virtual environment
-source $HOME/smode_env/bin/activate
+source $MYSOFTWARE/smode_env/bin/activate
 
 # Run download script
 bash $HOME/SMODE/download_podaac_SETONIX.sh

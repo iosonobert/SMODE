@@ -12,7 +12,7 @@ echo "SLURM Job ID: $SLURM_JOB_ID"
 module load python/3.11.6
 
 # Activate virtual environment
-source $HOME/smode_env/bin/activate
+source $MYSOFTWARE/smode_env/bin/activate
 
 # Run download script
 python3 extract_exif.py
