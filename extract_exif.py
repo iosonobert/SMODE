@@ -1,13 +1,10 @@
-imgdir = '/scratch/pawsey0106/azulberti/DOPPVIS/DoppVis_20230418_235551_555-20230419_001018_055'
+import os
 
 import glob, os
 import rasterio, pandas as pd
-
-files = glob.glob(imgdir + '/*.tif')
+import exiftool
 
 ## Change this
-import exiftool
-EXIF_TOOL_full = '/usr/local/bin/exiftool'
 EXIF_TOOL_full = r'/software/projects/pawsey0106/azulberti/Image-ExifTool-12.69/exiftool'
 
 imgsearch = '*/*.tif'
@@ -20,19 +17,40 @@ def parse_exif(fname):
 
     return df_meta
 
-tiff_files = glob.glob(f"{imgdir}{imgsearch}", recursive=True)
-print(len(tiff_files), ' found.\nConverting...')
+basedir = os.environ["MYSCRATCH"] + "/DOPPVIS"
 
-print('Reading EXIF data...')
-df = []
-for ff in tiff_files:
-    df.append(parse_exif(ff))
+# List only subdirectories, skip anything ending in .gz
+imgdirs = [
+    d for d in os.listdir(basedir)
+    if os.path.isdir(os.path.join(basedir, d)) and not d.endswith(".gz")
+]
 
-print('EXIF data read...')
-print(len(df), ' files processed.')
+print(f'Found {len(imgdirs)} subdirectories in {basedir}.')
 
-exif = pd.concat(df)
-ds_exif = exif.to_xarray().rename({'index':'time'})
+for imgdir in imgdirs:
+    print(f'Processing directory: {imgdir}')
+    netcdfname = os.path.join(basedir, imgdir, 'exif_data.nc')
+    if os.path.exists(netcdfname):
+        print(f'   {netcdfname} already exists, skipping...')
+        continue
 
-print(ds_exif)
-print('Done.')
+    files = glob.glob(imgdir + '/*.tif')
+
+    tiff_files = glob.glob(f"{imgdir}{imgsearch}", recursive=True)
+    print(len(tiff_files), ' found.\nConverting...')
+
+    print('Reading EXIF data...')
+    df = []
+    for ff in tiff_files:
+        df.append(parse_exif(ff))
+
+    print('EXIF data read...')
+    print(len(df), ' files processed.')
+
+    exif = pd.concat(df)
+    ds_exif = exif.to_xarray().rename({'index':'time'})
+
+    ds_exif.to_netcdf()
+
+    print(ds_exif)
+    print('Done.')
