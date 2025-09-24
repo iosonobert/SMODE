@@ -23,8 +23,8 @@ fi
 podaac-data-subscriber \
   -c SMODE_L1_MASS_DOPPVIS_V1 \
   -d $MYSCRATCH/DOPPVIS \
-  --start-date "${DATE}T${STARTTIME}Z" \
-  --end-date "${DATE}T${ENDTIME}Z" \
+  --start-date ${DATE}T${STARTTIME}Z \
+  --end-date ${DATE}T${ENDTIME}Z \
   -e ""
 
 echo "Download complete."
