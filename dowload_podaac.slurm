@@ -4,7 +4,7 @@
 #SBATCH --error=smode_download.err
 #SBATCH --time=04:00:00
 #SBATCH --mem=16G
-#SBATCH --partition=normal
+#SBATCH --partition=copy
 
 # Activate virtual environment
 source $HOME/smode_env/bin/activate
