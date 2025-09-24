@@ -2,7 +2,7 @@
 source ~/smode_env/bin/activate
 
 # Make sure download folder exists
-mkdir -p ./DOPPVIS
+mkdir -p $MYSCRATCH/DOPPVIS
 
 # Run the download
 podaac-data-subscriber \
