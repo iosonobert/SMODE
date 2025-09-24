@@ -8,7 +8,7 @@ files = glob.glob(imgdir + '/*.tif')
 ## Change this
 import exiftool
 EXIF_TOOL_full = '/usr/local/bin/exiftool'
-EXIF_TOOL_full = r'/home/andrew/Image-ExifTool-12.69/exiftool'
+EXIF_TOOL_full = r'/software/projects/pawsey0106/azulberti/Image-ExifTool-12.69/exiftool'
 
 imgsearch = '*/*.tif'
 
