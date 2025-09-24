@@ -21,7 +21,7 @@ basedir = os.environ["MYSCRATCH"] + "/DOPPVIS"
 
 # List only subdirectories, skip anything ending in .gz
 imgdirs = [
-    os.path.isdir(os.path.join(basedir, d)) for d in os.listdir(basedir)
+    os.path.join(basedir, d) for d in os.listdir(basedir)
     if os.path.isdir(os.path.join(basedir, d)) and not d.endswith(".gz")
 ]
 
@@ -29,7 +29,7 @@ print(f'Found {len(imgdirs)} subdirectories in {basedir}.')
 
 for imgdir in imgdirs:
     print(f'Processing directory: {imgdir}')
-    netcdfname = os.path.join(basedir, imgdir, 'exif_data.nc')
+    netcdfname = os.path.join(basedir, imgdir + '_exif_data.nc')
     if os.path.exists(netcdfname):
         print(f'   {netcdfname} already exists, skipping...')
         continue
