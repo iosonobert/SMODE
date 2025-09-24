@@ -16,6 +16,9 @@ source smode_env/bin/activate
 pip install --upgrade pip
 pip install podaac-data-subscriber
 pip install pyexiftool
+pip install rasterio
+pip install pandas
+pip install xarray
 
 # Deactivate when done
 deactivate

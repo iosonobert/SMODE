@@ -2,7 +2,6 @@ imgdir = './SMODE_IOP2_MASS_DOPPVIS_20230427_005616_055-20230427_010241_055'
 
 import glob, os
 import rasterio, pandas as pd
-from tqdm import tqdm
 
 import matplotlib.pyplot as plt
 
