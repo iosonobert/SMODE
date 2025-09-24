@@ -10,4 +10,4 @@
 source $HOME/smode_env/bin/activate
 
 # Run download script
-bash ~/smode_project/download_smode_login.sh
+bash $HOME/SMODE/download_smode_login.sh
