@@ -1,3 +1,4 @@
+# remember to run "chmod +x create_podaac_venv_login_node_SETONIX.sh" to make it executable
 
 # Load Python module if needed
 module load python/3.11.6   # replace with the correct version
