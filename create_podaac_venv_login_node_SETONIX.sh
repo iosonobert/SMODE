@@ -19,6 +19,7 @@ pip install pyexiftool
 pip install rasterio
 pip install pandas
 pip install xarray
+pip install netCDF4
 
 # Deactivate when done
 deactivate
