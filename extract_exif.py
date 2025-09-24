@@ -21,7 +21,7 @@ basedir = os.environ["MYSCRATCH"] + "/DOPPVIS"
 
 # List only subdirectories, skip anything ending in .gz
 imgdirs = [
-    d for d in os.listdir(basedir)
+    os.path.isdir(os.path.join(basedir, d)) for d in os.listdir(basedir)
     if os.path.isdir(os.path.join(basedir, d)) and not d.endswith(".gz")
 ]
 
