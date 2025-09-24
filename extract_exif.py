@@ -27,7 +27,9 @@ print('Reading EXIF data...')
 df = []
 for ff in tiff_files:
     df.append(parse_exif(ff))
-    
+
+print('EXIF data read...')
+print(len(df), ' files processed.')
 
 exif = pd.concat(df)
 ds_exif = exif.to_xarray().rename({'index':'time'})
