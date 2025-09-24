@@ -25,7 +25,7 @@ print(len(tiff_files), ' found.\nConverting...')
 
 print('Reading EXIF data...')
 df = []
-for ff in tqdm(tiff_files):
+for ff in tiff_files:
     df.append(parse_exif(ff))
     
 
