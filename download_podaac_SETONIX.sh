@@ -14,13 +14,16 @@ if [ -z "$DATE" ]; then
     exit 1
 fi
 if [ -z "$STARTTIME" ]; then
-    STARTTIME="00:00:00"
+    STARTTIME=00:00:00
 fi
 if [ -z "$ENDTIME" ]; then
-    ENDTIME="23:59:59"
+    ENDTIME=23:59:59
 fi
+
+echo "Downloading data for date: $DATE from $STARTTIME to $ENDTIME"
+
 # Run the download
-podaac-data-subscriber \
+podaac-data-downloader \
   -c SMODE_L1_MASS_DOPPVIS_V1 \
   -d $MYSCRATCH/DOPPVIS \
   --start-date ${DATE}T${STARTTIME}Z \
