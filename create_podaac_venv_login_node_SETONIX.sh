@@ -4,7 +4,7 @@
 module load python/3.11.6   # replace with the correct version
 
 # Go to your home directory or project folder
-cd $HOME
+cd $MYSOFTWARE
 
 # Create virtual environment (one-time)
 python3 -m venv smode_env
