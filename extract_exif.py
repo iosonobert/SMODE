@@ -9,7 +9,7 @@ files = glob.glob(imgdir + '/*.tif')
 import exiftool
 EXIF_TOOL_full = '/usr/local/bin/exiftool'
 EXIF_TOOL_full = r'/home/andrew/Image-ExifTool-12.69/exiftool'
-a
+
 imgsearch = '*/*.tif'
 
 # outzarr  = os.path.join(field_dir, f'processed_data/{camera}/{camera}_V3_DASK.zarr')
