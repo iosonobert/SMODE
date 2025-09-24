@@ -15,6 +15,7 @@ source smode_env/bin/activate
 # Upgrade pip and install packages
 pip install --upgrade pip
 pip install podaac-data-subscriber
+pip install pyexiftool
 
 # Deactivate when done
 deactivate
