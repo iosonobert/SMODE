@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=smode_download
-#SBATCH --output=smode_download.out
-#SBATCH --error=smode_download.err
+#SBATCH --job-name=smode_exif
+#SBATCH --output=smode_exif.out
+#SBATCH --error=smode_exif.err
 #SBATCH --time=04:00:00
 #SBATCH --mem=16G
 #SBATCH --partition=copy
