@@ -11,11 +11,28 @@ imgsearch = '*/*.tif'
 
 # outzarr  = os.path.join(field_dir, f'processed_data/{camera}/{camera}_V3_DASK.zarr')
 def parse_exif(fname):
+    ## Simple function to extract EXIF metadata from a single file
     with exiftool.ExifTool(EXIF_TOOL_full) as et:
         metadata = et.execute_json(fname)
         df_meta  = pd.DataFrame(metadata)
 
     return df_meta
+
+def pull_times(ds_exif):
+    # Simple function fo parse the date and time from the exif data
+    dts = []
+    for filenames in ds_exif['File:FileName'].values:
+        print(filenames)
+        # Regex to extract the YYYYMMDD and HHMMSS parts
+        match = re.search(r"_(\d{8})_(\d{6})_", filenames)
+        if match:
+            date_str, time_str = match.groups()
+            dt = datetime.strptime(date_str + time_str, "%Y%m%d%H%M%S")
+        # print(dt)  # 2023-04-18 00:19:51
+        dts.append(dt)
+
+    dts = np.array(dts)
+    return dts
 
 basedir = os.environ["MYSCRATCH"] + "/DOPPVIS"
 
@@ -52,6 +69,13 @@ for imgdir in imgdirs:
 
     exif = pd.concat(df)
     ds_exif = exif.to_xarray().rename({'index':'time'})
+
+    print('Parsing and sorting by times')
+    ds_exif['time'] = pull_times(ds_exif)
+
+    # Sort the dataset by time
+    order = ds_exif['time'].argsort()
+    ds_exif = ds_exif.isel(time=order)
 
     ds_exif.to_netcdf(netcdfname)
     print(f'   Saved to {netcdfname}')
