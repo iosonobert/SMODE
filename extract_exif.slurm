@@ -4,7 +4,7 @@
 #SBATCH --error=smode_exif.err
 #SBATCH --time=04:00:00
 #SBATCH --mem=16G
-#SBATCH --partition=copy
+#SBATCH --partition=work
 
 # Print job ID into the output file
 echo "SLURM Job ID: $SLURM_JOB_ID"
@@ -15,4 +15,4 @@ module load python/3.11.6
 source $MYSOFTWARE/smode_env/bin/activate
 
 # Run download script
-python3 extract_exif.py
+python3 -u extract_exif.py

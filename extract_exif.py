@@ -1,4 +1,7 @@
 import os
+import re
+from datetime import datetime
+import numpy as np
 
 import glob, os
 import rasterio, pandas as pd
@@ -60,9 +63,14 @@ for imgdir in imgdirs:
 
     print('Reading EXIF data...')
     df = []
+
     for ff in tiff_files:
         df.append(parse_exif(ff))
-        break 
+        if len(df) % 100 == 0:
+            print(f'   {len(df)} files processed...')
+            
+        if len(df) >2:
+            pass # Debug step
     
     print('EXIF data read...')
     print(len(df), ' files processed.')
@@ -74,7 +82,7 @@ for imgdir in imgdirs:
     ds_exif['time'] = pull_times(ds_exif)
 
     # Sort the dataset by time
-    order = ds_exif['time'].argsort()
+    order = ds_exif['time'].values.argsort()
     ds_exif = ds_exif.isel(time=order)
 
     ds_exif.to_netcdf(netcdfname)
