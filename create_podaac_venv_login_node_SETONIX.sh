@@ -20,6 +20,9 @@ pip install rasterio
 pip install pandas
 pip install xarray
 pip install netCDF4
+pip install matplotlib
+pip install scipy
+pip install aerial_imagery
 
 # Deactivate when done
 deactivate
