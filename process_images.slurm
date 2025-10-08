@@ -3,8 +3,8 @@
 #SBATCH --output=smode_process.out
 #SBATCH --error=smode_process.out
 #SBATCH --time=01:00:00
-#SBATCH --mem=16G
-#SBATCH --partition=debug
+#SBATCH --mem=230G
+#SBATCH --partition=work
 
 # Print job ID into the output file
 echo "SLURM Job ID: $SLURM_JOB_ID"
