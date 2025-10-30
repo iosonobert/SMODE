@@ -3,7 +3,9 @@ source ~/smode_env/bin/activate
 
 INSTRUMENT="$1"
 if [ -z "$INSTRUMENT" ]; then
-    INSTRUMENT=LWIR
+    echo ERROR: Instrument argument is required.
+    echo "Usage: $0 INSTRUMENT"
+    exit 1
 fi
 echo "Instrument: $INSTRUMENT"
 

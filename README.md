@@ -56,7 +56,8 @@ Pretty annoying that I made it the fourth input. I should change that.
 The download script unzips, but if for whatever reason it doesn't finish use
 
 `
-sbatch unzip_podaac.slurm
+sbatch unzip_podaac.slurm LWIR
+sbatch unzip_podaac.slurm DOPPVIS
 `
 
 By default this runs 4 H jobs on the COPY partition and only unxips folders that haven't been partially unzipped. Patials will be a big gotya. 

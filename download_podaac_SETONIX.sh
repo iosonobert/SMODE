@@ -42,14 +42,14 @@ podaac-data-downloader \
 echo "Download complete."
 
 # Optional: extract downloaded .gz files
-for f in $MYSCRATCH/DOPPVIS/*.gz; do
+for f in $MYSCRATCH/$INSTRUMENT/*.gz; do
     echo "Extracting $f"
-    # tar -xzvf "$f" -C $MYSCRATCH/DOPPVIS
+    # tar -xzvf "$f" -C $MYSCRATCH/$INSTRUMENT
     first_entry=$(tar -tzf "$f" | head -1 | cut -d/ -f1)
-    dest="$MYSCRATCH/DOPPVIS/$first_entry"
+    dest="$MYSCRATCH/$INSTRUMENT/$first_entry"
 
     if [ ! -d "$dest" ]; then
-        tar -xzvf "$f" -C "$MYSCRATCH/DOPPVIS"
+        tar -xzvf "$f" -C "$MYSCRATCH/$INSTRUMENT"
     else
         echo "Archive $dest already extracted, not extracting again."
     fi

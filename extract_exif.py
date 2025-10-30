@@ -1,4 +1,4 @@
-import os
+import os, sys
 import re
 from datetime import datetime
 import numpy as np
@@ -6,6 +6,11 @@ import numpy as np
 import glob, os
 import rasterio, pandas as pd
 import exiftool
+
+instrument = sys.argv[1]  # Change this as needed
+print(f'Processing instrument: {instrument}')
+if instrument is None:
+    raise ValueError("Instrument argument is required.")
 
 ## Change this
 EXIF_TOOL_full = r'/software/projects/pawsey0106/azulberti/Image-ExifTool-12.69/exiftool'
@@ -37,7 +42,8 @@ def pull_times(ds_exif):
     dts = np.array(dts)
     return dts
 
-basedir = os.environ["MYSCRATCH"] + "/DOPPVIS"
+basedir = os.environ["MYSCRATCH"] + "/" + instrument
+print(f'Base directory: {basedir}')
 
 # List only subdirectories, skip anything ending in .gz
 imgdirs = [
@@ -72,6 +78,10 @@ for imgdir in imgdirs:
         if len(df) >2:
             pass # Debug step
     
+    if len(df) == 0:
+        print(f'   No files found in {imgdir}, skipping...')
+        continue
+        
     print('EXIF data read...')
     print(len(df), ' files processed.')
 
