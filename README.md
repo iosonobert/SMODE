@@ -40,6 +40,17 @@ if you sish to subset.
 
 By default this runs 30 H jobs on the COPY partition. This is probably good for a full day including extraction.  
 
+## LWIR and DOPPVIS
+
+These 2 different instruments can be downloaded by the fourth input to download_podaac.slurm
+
+`
+sbatch download_podaac.slurm YYYY-MM-DD 10:00:00 10:00:05 LWIR
+sbatch download_podaac.slurm YYYY-MM-DD 10:00:00 10:00:05 DOPPVIS
+`
+
+Pretty annoying that I made it the fourth input. I should change that.  
+
 ## Unzipping data
 
 The download script unzips, but if for whatever reason it doesn't finish use
