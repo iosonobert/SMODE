@@ -8,9 +8,10 @@
 
 # Print job ID into the output file
 echo "SLURM Job ID: $SLURM_JOB_ID"
+echo "User input for instrument: $1"
 
 # Activate virtual environment
 source $HOME/smode_env/bin/activate
 
 # Run download script
-bash $HOME/SMODE/unzip_podaac_SETONIX.sh
+bash $MYSOFTWARE/code/SMODE/unzip_podaac_SETONIX.sh $1
