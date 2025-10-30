@@ -44,10 +44,10 @@ By default this runs 30 H jobs on the COPY partition. This is probably good for 
 
 These 2 different instruments can be downloaded by the fourth input to download_podaac.slurm
 
-`
+```
 sbatch download_podaac.slurm YYYY-MM-DD 10:00:00 10:00:05 LWIR
 sbatch download_podaac.slurm YYYY-MM-DD 10:00:00 10:00:05 DOPPVIS
-`
+```
 
 Pretty annoying that I made it the fourth input. I should change that.  
 
@@ -55,10 +55,10 @@ Pretty annoying that I made it the fourth input. I should change that.
 
 The download script unzips, but if for whatever reason it doesn't finish use
 
-`
+```
 sbatch unzip_podaac.slurm LWIR
 sbatch unzip_podaac.slurm DOPPVIS
-`
+```
 
 By default this runs 4 H jobs on the COPY partition and only unxips folders that haven't been partially unzipped. Patials will be a big gotya. 
 
@@ -68,8 +68,9 @@ As you might expect:
 
 By default this runs 4 H jobs on the COPY partition 
 
-`
-sbatch extract_exif.slurm
-`
+```
+sbatch extract_exif.slurm LWIR
+sbatch extract_exif.slurm DOPPVIS
+```
 
 This makes netcdfs for all unzipped folders that don't yet have netcdfs. 
